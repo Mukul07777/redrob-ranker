@@ -1,0 +1,46 @@
+team_name: "your-team-name"
+primary_contact:
+  name: "Mukul"
+  email: "your@email.com"
+  phone: "+91-XXXXXXXXXX"
+team_members:
+  - name: "Mukul"
+    email: "your@email.com"
+    role: "ML Engineer"
+
+github_repo: "https://github.com/YOUR_USERNAME/redrob-ranker"
+sandbox_link: "https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker"
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+compute:
+  platform: "Windows 11 Laptop"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.x"
+  os: "Windows 11"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+ai_tools_used:
+  - "Claude"
+ai_usage_summary: |
+  Used Claude for architecture discussion and code review.
+  No candidate data was fed to any LLM.
+
+methodology_summary: |
+  Rule-based ranker with 7 weighted scoring components. Skill match
+  is the dominant signal, weighted by proficiency, endorsements, and
+  duration — not keyword counting. Career quality penalizes
+  consulting-only backgrounds explicitly called out in the JD.
+  Availability multiplier down-weights inactive or unresponsive
+  candidates. Honeypot detection flags impossible profiles before
+  scoring.
+
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
