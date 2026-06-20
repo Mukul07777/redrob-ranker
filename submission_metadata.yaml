@@ -1,22 +1,24 @@
-team_name: "your-team-name"
+team_name: "Velox"
+
 primary_contact:
   name: "Mukul"
-  email: "your@email.com"
-  phone: "+91-XXXXXXXXXX"
+  email: "mukul24359@iiitd.ac.in"
+  phone: "+91-7303518731"
+
 team_members:
   - name: "Mukul"
-    email: "your@email.com"
-    role: "ML Engineer"
+    email: "mukul24359@iiitd.ac.in"
+    role: "Solo — Student"
 
-github_repo: "https://github.com/YOUR_USERNAME/redrob-ranker"
-sandbox_link: "https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker"
+github_repo: "https://github.com/Mukul07777/redrob-ranker"
+sandbox_link: "https://huggingface.co/spaces/MUKUL001/redrob-ranker"
 reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
 
 compute:
-  platform: "Windows 11 Laptop"
+  platform: "Windows 11 Laptop (HP)"
   cpu_cores: 8
   ram_gb: 16
-  python_version: "3.x"
+  python_version: "3.11"
   os: "Windows 11"
   uses_gpu_for_inference: false
   has_network_during_ranking: false
@@ -27,16 +29,21 @@ ai_tools_used:
   - "Claude"
 ai_usage_summary: |
   Used Claude for architecture discussion and code review.
-  No candidate data was fed to any LLM.
+  No candidate data was fed to any LLM. All scoring logic,
+  weights, and honeypot detection were designed and validated
+  by the participant.
 
 methodology_summary: |
   Rule-based ranker with 7 weighted scoring components. Skill match
-  is the dominant signal, weighted by proficiency, endorsements, and
-  duration — not keyword counting. Career quality penalizes
-  consulting-only backgrounds explicitly called out in the JD.
-  Availability multiplier down-weights inactive or unresponsive
-  candidates. Honeypot detection flags impossible profiles before
-  scoring.
+  (38%) is the dominant signal — weighted by proficiency × endorsements
+  × duration, not keyword counting. Zero-evidence skills get 5% trust
+  regardless of claimed level. Career quality (22%) penalizes
+  consulting-only backgrounds (TCS, Infosys, Wipro, Accenture,
+  Cognizant, Capgemini) explicitly called out in the JD. Availability
+  (15%) multiplier down-weights inactive or unresponsive candidates —
+  inactive >6 months caps at 0.35. Honeypot detection flags 4 patterns
+  of impossible profiles before scoring. Runtime ~60 seconds on CPU
+  for 100K candidates. stdlib only, no pip installs, no network.
 
 declarations:
   read_submission_spec: true
